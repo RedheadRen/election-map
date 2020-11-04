@@ -15,53 +15,53 @@ var politicianInfo = function(name, partyColor){
   return politician;
 };
 
-var flo = politicianInfo("Flo Florrick", [132, 17, 11]);
+var trump = politicianInfo("Donald Trump", [182, 9, 0]);
 
-var jane = politicianInfo("Jane Doesitall", [245, 141, 136]);
+var biden = politicianInfo("Joe Biden", [12, 0, 182]);
 console.log();
 
-flo.electionResults = [5, 1, 7 ,2 ,33, 6, 4, 2, 1, 14, 8, 3, 1, 11, 11, 0, 5, 3, 3, 3, 7, 4, 8, 9, 3, 7, 2, 2, 4, 2, 8, 3, 15, 15, 2, 12, 0, 4, 13, 1, 3, 2, 8, 21, 3, 2, 11, 1, 3, 7, 2]
-jane.electionResults = [4, 2, 4, 4, 22, 3, 3, 1, 2, 15, 8, 1, 3, 9, 0, 6, 1, 5, 5, 1, 3, 7, 8, 1, 3, 3, 1, 3, 2, 2, 6, 2, 14, 0, 1, 6, 7, 3, 7, 3, 6, 1, 3, 17, 3, 1, 2, 11, 2, 3, 1]
+trump.electionResults = []
+biden.electionResults = []
 
-flo.electionResults [9] = 1;
-jane.electionResults [9] = 28;
+//trump.electionResults [] = ;
+//biden.electionResults [] = ;
 
-flo.electionResults [4] = 17;
-jane.electionResults [4] = 38;
+//trump.electionResults [] = ;
+//biden.electionResults [] = ;
 
-flo.electionResults [43] = 11;
-jane.electionResults [43] = 27;
+//trump.electionResults [] = ;
+//biden.electionResults [] = ;
 
-console.log(flo.electionResults);
-console.log(jane.electionResults);
-flo.tallyUpTotalVotes();
-jane.tallyUpTotalVotes();
-console.log(flo.totalVotes);
-console.log(jane.totalVotes);
+console.log(trump.electionResults);
+console.log(biden.electionResults);
+trump.tallyUpTotalVotes();
+biden.tallyUpTotalVotes();
+console.log(trump.totalVotes);
+console.log(biden.totalVotes);
 
 var winner = "???";
 
 setStateResults = function(state){
   theStates[state].winner = null;
-  if (flo.electionResults[state] > jane.electionResults[state]){
-    theStates[state].winner = flo;
-  }else if (flo.electionResults[state] < jane.electionResults[state]){
-    theStates[state].winner = jane;
+  if (trump.electionResults[state] > biden.electionResults[state]){
+    theStates[state].winner = trump;
+  }else if (trump.electionResults[state] < biden.electionResults[state]){
+    theStates[state].winner = biden;
   }
   var stateWinner = theStates[state].winner;
   if (stateWinner !== null){
     theStates[state].rgbColor = stateWinner.partyColor;
   }
   else {
-    theStates[state].rgbColor = [11,32,57];
+    theStates[state].rgbColor = [119,50,231];
   }
 
 var countryInfoTable = document.getElementById("countryResults");
 var row = countryInfoTable.children[0].children[0];
-  row.children[0].innerText = flo.name;
-  row.children[1].innerText = flo.totalVotes;
-  row.children[2].innerText = jane.name;
-  row.children[3].innerText = jane.totalVotes;
+  row.children[0].innerText = trump.name;
+  row.children[1].innerText = trump.totalVotes;
+  row.children[2].innerText = biden.name;
+  row.children[3].innerText = biden.totalVotes;
   row.children[5].innerText = winner;
 
 var stateInfoTable = document.getElementById("stateResults");
@@ -78,11 +78,11 @@ var winnersName = body.children[2].children[1];
 stateName.innerText = theStates[state].nameFull;
   abbrev.innerText = "(" +theStates[state].nameAbbrev +")";
   
-  name1.innerText = flo.name;
-  name2.innerText = jane.name;
+  name1.innerText = trump.name;
+  name2.innerText = biden.name;
   
-  name1Results.innerText = flo.electionResults[state];
-  name2Results.innerText = jane.electionResults[state];
+  name1Results.innerText = trump.electionResults[state];
+  name2Results.innerText = biden.electionResults[state];
 
   if (theStates[state].winner === null){
     winnersName.innerText = "DRAW";
@@ -91,10 +91,10 @@ stateName.innerText = theStates[state].nameFull;
  }
 }
 
-if (flo.totalVotes > jane.totalVotes){
-  winner = flo.name;
-}else if (flo.totalVotes < jane.totalVotes){
-  winner = jane.name;
+if (trump.totalVotes > biden.totalVotes){
+  winner = trump.name;
+}else if (trump.totalVotes < biden.totalVotes){
+  winner = biden.name;
 }
 else {
   winner = "DRAW";
@@ -103,5 +103,5 @@ else {
 
 
 console.log("And the winner is " + winner + "!");
-console.log("Flo's color is: " + flo.partyColor);
-console.log("Jane's color is: " + jane.partyColor);
+console.log("Trump's color is: " + trump.partyColor);
+console.log("Biden's color is: " + biden.partyColor);
